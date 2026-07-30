@@ -1,46 +1,29 @@
-﻿using MelonLoader;
-using S1API.Entities;
+﻿using S1API.Entities;
 using S1API.Entities.NPCs;
 using S1API.PhoneCalls;
-using S1API.Quests;
-using S1API.Quests.Identifiers;
+using ScheduleOne.ScriptableObjects;
 
 namespace ExtraDrugs.Miscellaneous
 {
-    public class PhoneCall1 : PhoneCallDefinition
+    public class IntroCall : PhoneCallDefinition
     {
-        public PhoneCall1() : base(NPC.Get<UncleNelson>())
+        public static PhoneCallData? IntroCallData;
+
+        public IntroCall() : base(NPC.Get<UncleNelson>())
         {
-            AddStage("You finally finished off <h1>the Benzies</h>, and you've also built up a customer base. I haven't said this often, but I'm proud of you, nephew.");
-            AddStage("My trial just finished, and I'm going in the pen for a while. I know you can do this alone, I believe in you.");
-            AddStage("If you want to expand even further, you can start manufacturing <h1>MDMA</h>. There's this guy, <h1>Jean Redneck</h> . I believe he can hook you up with some precursors.");
-            AddStage("I gotta go now, I'll miss you nephew.");
+            IntroCallData = S1PhoneCallData;
+            AddStage(
+                "And that's how we deal with pests, <h1>Thomas Benzies</h> deserved it. " +
+                "I can't lie, he had it coming. " +
+                "Now that he's gone, the market's all yours. " +
+                "You want to make more money, right?"
+                );
+            AddStage(
+                "You could talk to <h1>Salvador Moreno</h>, I believe he can help you. " +
+                "Not only does he supply coca seeds, he also cooks crack in his free time. " +
+                "He'll send you the recipe."
+                );
             Completed();
-        }
-    }
-
-    public class PhoneCallTriggers
-    {
-        public bool isPhoneCall1Done;
-
-        public void PhoneCall1Trigger()
-        {
-            if (isPhoneCall1Done)
-                return;
-
-            var quest = QuestManager.Get<DefeatCartel>();
-
-            if (quest != null)
-            {
-                quest.OnComplete += OnQuestCompleted;
-                isPhoneCall1Done = true;
-            }
-        }
-
-        private void OnQuestCompleted()
-        {
-            MelonLogger.Msg("Queueing phone call.");
-            CallManager.QueueCall(new PhoneCall1());
         }
     }
 }
