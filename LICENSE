@@ -1,16 +1,29 @@
-MIT License
-
 Copyright (c) 2026 rivercardstudio
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of this software and associated documentation files (the "Software"), to view,
+study, download, modify, build, and use the Software for personal, educational,
+and testing purposes, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The Software may not be redistributed, published, uploaded, sold, licensed,
+or otherwise provided to any third party in source code or modified form
+without prior written permission from rivercardstudio.
+
+The Software may not be used in other projects, commercial products, or
+public releases without prior written permission from rivercardstudio.
+
+Permission is granted to create personal modifications and builds of the
+Software for private use only. Any modifications or derivative works may not
+be distributed without prior written permission from rivercardstudio.
+
+The source code is provided publicly for the purpose of learning, reference,
+and understanding programming techniques. Users may use knowledge gained from
+studying the Software in their own projects, but may not copy, reuse, or
+incorporate portions of the Software's source code without permission.
+
+Requests for additional permissions or uses not covered by this license may be
+submitted to rivercardstudio. Permission may be granted or denied at the sole
+discretion of rivercardstudio.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
