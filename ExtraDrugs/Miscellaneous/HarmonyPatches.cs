@@ -12,7 +12,11 @@ namespace ExtraDrugs.Miscellaneous
         {
             if (ReferenceEquals(data, IntroCall.IntroCallData))
             {
-                CrackInTheTimeline.CompleteIntroCall();
+                LeanMachine.CompleteIntroCall();
+            }
+            else if (ReferenceEquals(data, PostBenziesCall.PostBenziesCallData))
+            {
+                CrackInTheTimeline.CompletePostBenziesCall();
             }
         }
     }

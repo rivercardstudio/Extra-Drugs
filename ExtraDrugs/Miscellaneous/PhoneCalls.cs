@@ -13,6 +13,29 @@ namespace ExtraDrugs.Miscellaneous
         {
             IntroCallData = S1PhoneCallData;
             AddStage(
+                "You can use the mixing station for mixing, but you can also use it to make other stuff such as edible mixtures, but also <h1>lean</h>. " +
+                "It's something you easily get done, and you can do it pretty fast and cheap. "
+                );
+            AddStage(
+                "Head over to the local Gas-Mart, grab yourself some <h1>cough syrup</h> and <h1>cuke</h>. " +
+                "Mix those ingredients together in the mixing station. "
+                );
+            AddStage(
+                "Then go to a hardware store, and buy a <h1>liquid station</h> and some <h1>empty bottles</h>. " +
+                "You can use the liquid station to package lean"
+                );
+            Completed();
+        }
+    }
+
+    public class PostBenziesCall : PhoneCallDefinition
+    {
+        public static PhoneCallData? PostBenziesCallData;
+
+        public PostBenziesCall() : base(NPC.Get<UncleNelson>())
+        {
+            PostBenziesCallData = S1PhoneCallData;
+            AddStage(
                 "And that's how we deal with pests, <h1>Thomas Benzies</h> deserved it. " +
                 "I can't lie, he had it coming. " +
                 "Now that he's gone, the market's all yours. " +

@@ -9,6 +9,112 @@ using UnityEngine;
 
 namespace ExtraDrugs.Miscellaneous
 {
+    public class LeanMachine : Quest
+    {
+        protected override string Title => "Lean Machine";
+        protected override string Description => "You make your first batch of lean.";
+        protected override bool AutoBegin => false;
+        protected override Sprite? QuestIcon => ImageUtils.LoadImage("River Card Studio/QuestIcon.png");
+
+        private static LeanMachine? leanMachine;
+        public static LeanMachine? Quest => leanMachine;
+
+        public static bool initialized = false;
+
+        public static bool liquidStationCompleted = false;
+        public static bool emptyBottleCompleted = false;
+        public static bool coughSyrupCompleted = false;
+        public static bool cukeCompleted = false;
+
+        private static QuestEntry? entryIntroCall;
+        private static QuestEntry? entryLiquidStation;
+        private static QuestEntry? entryEmptyBottle;
+        private static QuestEntry? entryCoughSyrup;
+        private static QuestEntry? entryCuke;
+        private static QuestEntry? entryLean;
+
+        public LeanMachine()
+        {
+            entryIntroCall = AddEntry("Talk to Uncle Nelson at a payphone");
+            entryLiquidStation = AddEntry("Buy 1x liquid station");
+            entryEmptyBottle = AddEntry("Buy 10x empty bottles");
+            entryCoughSyrup = AddEntry("Buy 2x cough syrup");
+            entryCuke = AddEntry("Buy 8x cuke");
+            entryLean = AddEntry("Make lean at the mixing station");
+        }
+
+        public static void Initialize()
+        {
+            if (initialized) return;
+            var mixingMania = QuestManager.Get<MixingMania>();
+            if (mixingMania != null && mixingMania.QuestEntries.TrueForAll(e => e.State == QuestState.Completed))
+            {
+                leanMachine = (LeanMachine)QuestManager.CreateQuest<LeanMachine>();
+                leanMachine.Begin();
+                CallManager.QueueCall(new IntroCall());
+                initialized = true;
+            }
+        }
+
+        public static void CompleteIntroCall()
+        {
+            entryIntroCall?.Complete();
+            entryLiquidStation?.Begin();
+            entryEmptyBottle?.Begin();
+            entryCoughSyrup?.Begin();
+            entryCuke?.Begin();
+        }
+
+        public void CompleteLiquidStation()
+        {
+            if (liquidStationCompleted) return;
+
+            liquidStationCompleted = true;
+            entryLiquidStation?.Complete();
+            CheckComplete();
+        }
+
+        public void CompleteEmptyBottle()
+        {
+            if (emptyBottleCompleted) return;
+
+            emptyBottleCompleted = true;
+            entryEmptyBottle?.Complete();
+            CheckComplete();
+        }
+
+        public void CompleteCoughSyrup()
+        {
+            if (coughSyrupCompleted) return;
+
+            coughSyrupCompleted = true;
+            entryCoughSyrup?.Complete();
+            CheckComplete();
+        }
+
+        public void CompleteCuke()
+        {
+            if (cukeCompleted) return;
+
+            cukeCompleted = true;
+            entryCuke?.Complete();
+            CheckComplete();
+        }
+
+        public void CompleteLean()
+        {
+            entryLean?.Complete();
+        }
+
+        private void CheckComplete()
+        {
+            if (liquidStationCompleted && emptyBottleCompleted && coughSyrupCompleted && cukeCompleted)
+            {
+                entryLean?.Begin();
+            }
+        }
+    }
+
     public class CrackInTheTimeline : Quest
     {
         protected override string Title => "Crack In The Timeline";
@@ -22,13 +128,13 @@ namespace ExtraDrugs.Miscellaneous
         public static bool initialized = false;
         public static bool sent = false;
 
-        private static QuestEntry? entryIntroCall;
+        private static QuestEntry? entryPostBenziesCall;
         private static QuestEntry? entryCookCrack;
         private static QuestEntry? entryBakeCrack;
 
         public CrackInTheTimeline()
         {
-            entryIntroCall = AddEntry("Talk to Uncle Nelson at a payphone");
+            entryPostBenziesCall = AddEntry("Talk to Uncle Nelson at a payphone");
             entryCookCrack = AddEntry("Cook liquid crack at the chemistry station");
             entryBakeCrack = AddEntry("Bake the liquid crack with the lab oven");
         }
@@ -41,15 +147,15 @@ namespace ExtraDrugs.Miscellaneous
             {
                 crackInTheTimeline = (CrackInTheTimeline)QuestManager.CreateQuest<CrackInTheTimeline>();
                 crackInTheTimeline.Begin();
-                CallManager.QueueCall(new IntroCall());
+                CallManager.QueueCall(new PostBenziesCall());
                 initialized = true;
             }
         }
 
-        public static void CompleteIntroCall()
+        public static void CompletePostBenziesCall()
         {
             if (sent) return;
-            entryIntroCall?.Complete();
+            entryPostBenziesCall?.Complete();
             entryCookCrack?.Begin();
             NPC.Get<SalvadorMoreno>()?.SendTextMessage(
                 "Hey, Uncle Nelson told me you'd be interested in making crack. " + "\n" + "\n" +

@@ -10,6 +10,7 @@ namespace ExtraDrugs
     {
         public override void OnUpdate()
         {
+            LeanMachine.Initialize();
             CrackInTheTimeline.Initialize();
         }
     }

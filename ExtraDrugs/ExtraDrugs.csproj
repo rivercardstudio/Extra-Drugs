@@ -18,6 +18,14 @@
 	  <None Remove="Saveable\**" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Assets\Models\crack_rock.glb" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Models\crack_rock.glb" />
+	</ItemGroup>
+
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\..\Game\Schedule I Alternate\MelonLoader\net35\0Harmony.dll</HintPath>
