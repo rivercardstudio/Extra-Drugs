@@ -1,61 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
-	  <LangVersion>latest</LangVersion>
-	  <Platforms>AnyCPU;x64</Platforms>
-  </PropertyGroup>
-
-	<Target Name="CopyToModsFolder" AfterTargets="Build">
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="D:\Projects\Schedule I\Game\Schedule I Alternate\Mods" />
-			<Copy SourceFiles="$(TargetPath)" DestinationFolder="D:\Projects\Schedule I\Game\Schedule I Alternate\Mods" />
-    </Target>
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>ExtraDrugs</RootNamespace>
+		<TargetFramework>netstandard2.1</TargetFramework>
+	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Saveable\**" />
-	  <EmbeddedResource Remove="Saveable\**" />
-	  <None Remove="Saveable\**" />
+	  <EmbeddedResource Include="Assets\Models\crack_rock.glb" LogicalName="ExtraDrugs.Assets.Models.crack_rock.glb"/>
 	</ItemGroup>
+
+	<Target Name="CopyToMods" AfterTargets="Build">
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="..\..\Game\Schedule I Alternate\Mods\" />
+	</Target>
 
 	<ItemGroup>
-	  <None Remove="Assets\Models\crack_rock.glb" />
+	  <Reference Include="0Harmony">
+	    <HintPath>..\..\Game\Schedule I Alternate\MelonLoader\net35\0Harmony.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Assembly-CSharp">
+	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\Assembly-CSharp.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MelonLoader">
+	    <HintPath>..\..\Game\Schedule I Alternate\MelonLoader\net35\MelonLoader.dll</HintPath>
+	  </Reference>
+	  <Reference Include="S1API">
+	    <HintPath>..\..\Game\Schedule I Alternate\Mods\S1API.Mono.MelonLoader.dll</HintPath>
+	  </Reference>
+	  <Reference Include="S1MAPI_Mono">
+	    <HintPath>..\..\Game\Schedule I Alternate\UserLibs\S1MAPI_Mono.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ScheduleOne.Core">
+	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\ScheduleOne.Core.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine">
+	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.CoreModule">
+	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Assets\Models\crack_rock.glb" />
-	</ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\Game\Schedule I Alternate\MelonLoader\net35\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="MelonLoader">
-      <HintPath>..\..\..\..\Projects\Schedule I\Game\Schedule I Alternate\MelonLoader\net35\MelonLoader.dll</HintPath>
-    </Reference>
-    <Reference Include="S1API">
-      <HintPath>..\..\..\..\Projects\Schedule I\Game\Schedule I Alternate\Mods\S1API.Mono.MelonLoader.dll</HintPath>
-    </Reference>
-    <Reference Include="ScheduleOne.Core">
-      <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\ScheduleOne.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Projects\Schedule I\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\Projects\Schedule I\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\..\..\Projects\Schedule I\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	</ItemGroup>
-
 </Project>
-    

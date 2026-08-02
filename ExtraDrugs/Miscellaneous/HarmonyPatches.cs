@@ -1,23 +1,21 @@
-﻿using HarmonyLib;
+﻿using ExtraDrugs.Miscellaneous;
 using ScheduleOne.Calling;
 using ScheduleOne.ScriptableObjects;
+using HarmonyLib;
 
-namespace ExtraDrugs.Miscellaneous
+[HarmonyPatch(typeof(PayPhone), "OnCallCompleted")]
+class PayPhonePatch
 {
-    [HarmonyPatch(typeof(PayPhone), "OnCallCompleted")]
-    class PayPhonePatch
+    [HarmonyPostfix]
+    static void Postfix(PhoneCallData data)
     {
-        [HarmonyPostfix]
-        static void Postfix(PhoneCallData data)
+        if (ReferenceEquals(data, IntroCall.IntroCallData))
         {
-            if (ReferenceEquals(data, IntroCall.IntroCallData))
-            {
-                LeanMachine.CompleteIntroCall();
-            }
-            else if (ReferenceEquals(data, PostBenziesCall.PostBenziesCallData))
-            {
-                CrackInTheTimeline.CompletePostBenziesCall();
-            }
+            LeanMachine.CompleteIntroCall();
+        }
+        else if (ReferenceEquals(data, PostBenziesCall.PostBenziesCallData))
+        {
+            CrackInTheTimeline.CompletePostBenziesCall();
         }
     }
 }
