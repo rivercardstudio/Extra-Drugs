@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
 		<RootNamespace>ExtraDrugs</RootNamespace>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Mono'">
@@ -23,40 +24,32 @@
 	  <EmbeddedResource Include="Assets\Models\crack_rock.glb" LogicalName="ExtraDrugs.Assets.Models.crack_rock.glb" />
 	</ItemGroup>
 
-	<Target Name="CopyToModsMono" AfterTargets="Build" Condition="'$(Configuration)' == 'Mono'">
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="..\..\Game\Schedule I Alternate\Mods\" />
-	</Target>
-
-	<Target Name="CopyToModsIl2cpp" AfterTargets="Build" Condition="'$(Configuration)' == 'Il2cpp'">
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="..\..\Game\Schedule I Default\Mods\" />
-	</Target>
+	<PropertyGroup>
+		<MonoPath>D:\Projects\Schedule I\Extra-Drugs\References\Mono</MonoPath>
+		<Il2cppPath>D:\Projects\Schedule I\Extra-Drugs\References\Il2cpp</Il2cppPath>
+	</PropertyGroup>
 
 	<ItemGroup Condition="'$(Configuration)' == 'Mono'">
-		<Reference Include="0Harmony" HintPath="..\..\Game\Schedule I Alternate\MelonLoader\net35\0Harmony.dll" />
-		<Reference Include="Assembly-CSharp" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\Assembly-CSharp.dll" />
-		<Reference Include="MelonLoader" HintPath="..\..\Game\Schedule I Alternate\MelonLoader\net35\MelonLoader.dll" />
-		<Reference Include="S1API" HintPath="..\..\Game\Schedule I Alternate\Mods\S1API.Mono.MelonLoader.dll" />
-		<Reference Include="S1MAPI_Mono" HintPath="..\..\Game\Schedule I Alternate\UserLibs\S1MAPI_Mono.dll" />
-		<Reference Include="ScheduleOne.Core" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\ScheduleOne.Core.dll" />
-		<Reference Include="UnityEngine" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.dll" />
-		<Reference Include="UnityEngine.CoreModule" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.CoreModule.dll" />
+		<Reference Include="0Harmony" HintPath="$(MonoPath)\0Harmony.dll" Private="false" />
+		<Reference Include="Assembly-CSharp" HintPath="$(MonoPath)\Assembly-CSharp.dll" Private="false" />
+		<Reference Include="MelonLoader" HintPath="$(MonoPath)\MelonLoader.dll" Private="false" />
+		<Reference Include="S1API_Mono" HintPath="$(MonoPath)\S1API_Mono.dll" Private="false" />
+		<Reference Include="S1MAPI_Mono" HintPath="$(MonoPath)\S1MAPI_Mono.dll" Private="false" />
+		<Reference Include="ScheduleOne.Core" HintPath="$(MonoPath)\ScheduleOne.Core.dll" Private="false" />
+		<Reference Include="UnityEngine.CoreModule" HintPath="$(MonoPath)\UnityEngine.CoreModule.dll" Private="false" />
+		<Reference Include="UnityEngine" HintPath="$(MonoPath)\UnityEngine.dll" Private="false" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(Configuration)' == 'Il2cpp'">
-		<Reference Include="0Harmony" HintPath="..\..\Game\Schedule I Default\MelonLoader\net6\0Harmony.dll" Private="false" />
-		<Reference Include="Assembly-CSharp" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll" Private="false" />
-		<Reference Include="Il2CppFishNet.Runtime" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Il2CppFishNet.Runtime.dll" Private="false" />
-		<Reference Include="Il2CppScheduleOne.Core" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Il2CppScheduleOne.Core.dll" Private="false" />
-		<Reference Include="Il2CppInterop.Runtime" HintPath="..\..\Game\Schedule I Default\MelonLoader\net6\Il2CppInterop.Runtime.dll" Private="false" />
-		<Reference Include="Il2Cppmscorlib" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll" Private="false" />
-		<Reference Include="MelonLoader" HintPath="..\..\Game\Schedule I Default\MelonLoader\net6\MelonLoader.dll" Private="false" />
-		<Reference Include="S1API" HintPath="..\..\Game\Schedule I Default\Mods\S1API.Il2Cpp.MelonLoader.dll" Private="false" />
-		<Reference Include="S1MAPI_Il2cpp" HintPath="..\..\Game\Schedule I Default\UserLibs\S1MAPI_Il2cpp.dll" Private="false" />
-		<Reference Include="UnityEngine" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.dll" Private="false" />
-		<Reference Include="UnityEngine.CoreModule" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll" Private="false" />
-		<Reference Include="UnityEngine.ParticleSystemModule" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.ParticleSystemModule.dll" Private="false" />
-		<Reference Include="UnityEngine.PhysicsModule" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll" Private="false" />
-		<Reference Include="UnityEngine.UI" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll" Private="false" />
-		<Reference Include="Unity.TextMeshPro" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Unity.TextMeshPro.dll" Private="false" />
+		<Reference Include="0Harmony" HintPath="$(Il2cppPath)\0Harmony.dll" Private="false" />
+		<Reference Include="Assembly-CSharp" HintPath="$(Il2cppPath)\Assembly-CSharp.dll" Private="false" />
+		<Reference Include="Il2Cppmscorlib" HintPath="$(Il2cppPath)\Il2Cppmscorlib.dll" Private="false" />
+		<Reference Include="Il2CppInterop.Runtime" HintPath="$(Il2cppPath)\Il2CppInterop.Runtime.dll" Private="false" />
+		<Reference Include="Il2CppScheduleOne.Core" HintPath="$(Il2cppPath)\Il2CppScheduleOne.Core.dll" Private="false" />
+		<Reference Include="MelonLoader" HintPath="$(Il2cppPath)\MelonLoader.dll" Private="false" />
+		<Reference Include="S1API_Il2cpp" HintPath="$(Il2cppPath)\S1API_Il2cpp.dll" Private="false" />
+		<Reference Include="S1MAPI_Il2cpp" HintPath="$(Il2cppPath)\S1MAPI_Il2cpp.dll" Private="false" />
+		<Reference Include="UnityEngine.CoreModule" HintPath="$(Il2cppPath)\UnityEngine.CoreModule.dll" Private="false" />
+		<Reference Include="UnityEngine" HintPath="$(Il2cppPath)\UnityEngine.dll" Private="false" />
 	</ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 ﻿#if IL2CPPMELON
 using Il2CppScheduleOne.Calling;
 using Il2CppScheduleOne.ScriptableObjects;
-using Il2CppInterop.Runtime;
 #elif MONOMELON
 using ScheduleOne.ScriptableObjects;
 #endif

@@ -1,6 +1,5 @@
 ﻿using MelonLoader;
 using S1API.Products;
-using ExtraDrugs.Infrastructure;
 
 namespace ExtraDrugs.Infrastructure;
 

@@ -3,7 +3,9 @@
     <BuildType Name="Mono" />
     <BuildType Name="Il2cpp" />
     <Platform Name="AnyCPU" />
+    <Platform Name="x64" />
   </Configurations>
-
-  <Project Path="ExtraDrugs\ExtraDrugs.csproj" />
+  <Project Path="ExtraDrugs\ExtraDrugs.csproj">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
 </Solution>

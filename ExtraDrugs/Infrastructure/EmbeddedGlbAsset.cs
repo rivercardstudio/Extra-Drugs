@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using S1MAPI.Gltf;
+﻿using S1MAPI.Gltf;
 using S1MAPI.Utils;
 using UnityEngine;
 

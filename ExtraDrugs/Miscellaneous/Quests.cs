@@ -169,7 +169,6 @@ namespace ExtraDrugs.Miscellaneous
         public static void CompleteCookCrack()
         {
             entryCookCrack?.Complete();
-            crackInTheTimeline?.Complete();
             entryBakeCrack?.Begin();
         }
 

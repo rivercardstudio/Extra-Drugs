@@ -1,20 +1,13 @@
 ﻿#if IL2CPPMELON
-using Il2CppInterop.Runtime.InteropTypes;
 using S1 = Il2CppScheduleOne;
-using S1AvatarEquipping = Il2CppScheduleOne.AvatarFramework.Equipping;
 using S1Equipping = Il2CppScheduleOne.Equipping;
 using S1ItemFramework = Il2CppScheduleOne.ItemFramework;
 using S1Product = Il2CppScheduleOne.Product;
-using S1StationFramework = Il2CppScheduleOne.StationFramework;
-using S1Storage = Il2CppScheduleOne.Storage;
 #elif MONOMELON
 using S1 = ScheduleOne;
-using S1AvatarEquipping = ScheduleOne.AvatarFramework.Equipping;
 using S1Equipping = ScheduleOne.Equipping;
 using S1ItemFramework = ScheduleOne.ItemFramework;
 using S1Product = ScheduleOne.Product;
-using S1StationFramework = ScheduleOne.StationFramework;
-using S1Storage = ScheduleOne.Storage;
 #endif
 using ExtraDrugs.Infrastructure;
 using MelonLoader;
