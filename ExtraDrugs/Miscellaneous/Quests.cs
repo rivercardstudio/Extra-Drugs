@@ -122,20 +122,20 @@ namespace ExtraDrugs.Miscellaneous
         protected override bool AutoBegin => false;
         protected override Sprite? QuestIcon => ImageUtils.LoadImage("River Card Studio/QuestIcon.png");
 
-        private static CrackInTheTimeline? crackInTheTimeline;
+        public static CrackInTheTimeline? crackInTheTimeline;
         public static CrackInTheTimeline? Quest => crackInTheTimeline;
 
         public static bool initialized = false;
         public static bool sent = false;
 
-        private static QuestEntry? entryPostBenziesCall;
+        public static QuestEntry? entryPostBenziesCall;
         private static QuestEntry? entryCookCrack;
         private static QuestEntry? entryBakeCrack;
 
         public CrackInTheTimeline()
         {
             entryPostBenziesCall = AddEntry("Talk to Uncle Nelson at a payphone");
-            entryCookCrack = AddEntry("Cook liquid crack at the chemistry station");
+            entryCookCrack = AddEntry("Cook crack at the chemistry station");
             entryBakeCrack = AddEntry("Bake the liquid crack with the lab oven");
         }
 
@@ -169,6 +169,7 @@ namespace ExtraDrugs.Miscellaneous
         public static void CompleteCookCrack()
         {
             entryCookCrack?.Complete();
+            crackInTheTimeline?.Complete();
             entryBakeCrack?.Begin();
         }
 

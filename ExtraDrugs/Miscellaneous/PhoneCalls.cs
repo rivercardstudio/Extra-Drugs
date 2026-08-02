@@ -1,9 +1,13 @@
-﻿using S1API.Entities;
+﻿#if IL2CPPMELON
+using Il2CppScheduleOne.Calling;
+using Il2CppScheduleOne.ScriptableObjects;
+using Il2CppInterop.Runtime;
+#elif MONOMELON
+using ScheduleOne.ScriptableObjects;
+#endif
+using S1API.Entities;
 using S1API.Entities.NPCs;
 using S1API.PhoneCalls;
-using ScheduleOne.Calling;
-using ScheduleOne.ScriptableObjects;
-using HarmonyLib;
 
 namespace ExtraDrugs.Miscellaneous
 {

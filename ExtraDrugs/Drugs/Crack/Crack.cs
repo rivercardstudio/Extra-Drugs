@@ -1,7 +1,21 @@
-﻿using S1 = ScheduleOne;
+﻿#if IL2CPPMELON
+using Il2CppInterop.Runtime.InteropTypes;
+using S1 = Il2CppScheduleOne;
+using S1AvatarEquipping = Il2CppScheduleOne.AvatarFramework.Equipping;
+using S1Equipping = Il2CppScheduleOne.Equipping;
+using S1ItemFramework = Il2CppScheduleOne.ItemFramework;
+using S1Product = Il2CppScheduleOne.Product;
+using S1StationFramework = Il2CppScheduleOne.StationFramework;
+using S1Storage = Il2CppScheduleOne.Storage;
+#elif MONOMELON
+using S1 = ScheduleOne;
+using S1AvatarEquipping = ScheduleOne.AvatarFramework.Equipping;
 using S1Equipping = ScheduleOne.Equipping;
 using S1ItemFramework = ScheduleOne.ItemFramework;
 using S1Product = ScheduleOne.Product;
+using S1StationFramework = ScheduleOne.StationFramework;
+using S1Storage = ScheduleOne.Storage;
+#endif
 using ExtraDrugs.Infrastructure;
 using MelonLoader;
 using S1API.Console;
@@ -88,7 +102,7 @@ internal sealed class Crack : IDrugContentModule, IMixingCapability
                 .WithRecipeId(RecipeId)
                 .WithTitle("Crack \u2060")
                 .WithCookTimeMinutes(240)
-                .WithTemperature(300f, 20f)
+                .WithTemperature(290f, 10f)
                 .WithFinalLiquidColor(new Color(0.906f, 0.853f, 0.631f))
                 .WithCalculationMethod(QualityCalculationMethod.Additive)
                 .WithIngredient("iodine", 1)
@@ -413,19 +427,32 @@ internal sealed class Crack : IDrugContentModule, IMixingCapability
     private static S1Product.ProductDefinition? GetNativeProductDefinition(
         string itemId)
     {
+#if IL2CPPMELON
+        return S1.Registry.GetItem(itemId)?.TryCast<S1Product.ProductDefinition>();
+#else
         return S1.Registry.GetItem(itemId) as S1Product.ProductDefinition;
+#endif
     }
 
     private static S1ItemFramework.QualityItemDefinition?
         GetNativeQualityDefinition(string itemId)
     {
+#if IL2CPPMELON
+        return S1.Registry.GetItem(itemId)
+            ?.TryCast<S1ItemFramework.QualityItemDefinition>();
+#else
         return S1.Registry.GetItem(itemId) as
             S1ItemFramework.QualityItemDefinition;
+#endif
     }
 
     private static S1Equipping.Equippable_Viewmodel? AsViewmodel(
         S1Equipping.Equippable equippable)
     {
+#if IL2CPPMELON
+        return equippable.TryCast<S1Equipping.Equippable_Viewmodel>();
+#else
         return equippable as S1Equipping.Equippable_Viewmodel;
+#endif
     }
 }

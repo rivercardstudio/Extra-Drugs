@@ -1,44 +1,62 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<Configurations>Mono;Il2cpp</Configurations>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
 		<RootNamespace>ExtraDrugs</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Mono'">
 		<TargetFramework>netstandard2.1</TargetFramework>
+		<AssemblyName>ExtraDrugs_Mono</AssemblyName>
+		<DefineConstants>$(DefineConstants);MONO;MONOMELON</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Il2cpp'">
+		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyName>ExtraDrugs_Il2cpp</AssemblyName>
+		<DefineConstants>$(DefineConstants);IL2CPP;IL2CPPMELON</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Assets\Models\crack_rock.glb" LogicalName="ExtraDrugs.Assets.Models.crack_rock.glb"/>
+	  <EmbeddedResource Include="Assets\Models\crack_rock.glb" LogicalName="ExtraDrugs.Assets.Models.crack_rock.glb" />
 	</ItemGroup>
 
-	<Target Name="CopyToMods" AfterTargets="Build">
+	<Target Name="CopyToModsMono" AfterTargets="Build" Condition="'$(Configuration)' == 'Mono'">
 		<Copy SourceFiles="$(TargetPath)" DestinationFolder="..\..\Game\Schedule I Alternate\Mods\" />
 	</Target>
 
-	<ItemGroup>
-	  <Reference Include="0Harmony">
-	    <HintPath>..\..\Game\Schedule I Alternate\MelonLoader\net35\0Harmony.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Assembly-CSharp">
-	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\Assembly-CSharp.dll</HintPath>
-	  </Reference>
-	  <Reference Include="MelonLoader">
-	    <HintPath>..\..\Game\Schedule I Alternate\MelonLoader\net35\MelonLoader.dll</HintPath>
-	  </Reference>
-	  <Reference Include="S1API">
-	    <HintPath>..\..\Game\Schedule I Alternate\Mods\S1API.Mono.MelonLoader.dll</HintPath>
-	  </Reference>
-	  <Reference Include="S1MAPI_Mono">
-	    <HintPath>..\..\Game\Schedule I Alternate\UserLibs\S1MAPI_Mono.dll</HintPath>
-	  </Reference>
-	  <Reference Include="ScheduleOne.Core">
-	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\ScheduleOne.Core.dll</HintPath>
-	  </Reference>
-	  <Reference Include="UnityEngine">
-	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.dll</HintPath>
-	  </Reference>
-	  <Reference Include="UnityEngine.CoreModule">
-	    <HintPath>..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-	  </Reference>
+	<Target Name="CopyToModsIl2cpp" AfterTargets="Build" Condition="'$(Configuration)' == 'Il2cpp'">
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="..\..\Game\Schedule I Default\Mods\" />
+	</Target>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Mono'">
+		<Reference Include="0Harmony" HintPath="..\..\Game\Schedule I Alternate\MelonLoader\net35\0Harmony.dll" />
+		<Reference Include="Assembly-CSharp" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\Assembly-CSharp.dll" />
+		<Reference Include="MelonLoader" HintPath="..\..\Game\Schedule I Alternate\MelonLoader\net35\MelonLoader.dll" />
+		<Reference Include="S1API" HintPath="..\..\Game\Schedule I Alternate\Mods\S1API.Mono.MelonLoader.dll" />
+		<Reference Include="S1MAPI_Mono" HintPath="..\..\Game\Schedule I Alternate\UserLibs\S1MAPI_Mono.dll" />
+		<Reference Include="ScheduleOne.Core" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\ScheduleOne.Core.dll" />
+		<Reference Include="UnityEngine" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.dll" />
+		<Reference Include="UnityEngine.CoreModule" HintPath="..\..\Game\Schedule I Alternate\Schedule I_Data\Managed\UnityEngine.CoreModule.dll" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'Il2cpp'">
+		<Reference Include="0Harmony" HintPath="..\..\Game\Schedule I Default\MelonLoader\net6\0Harmony.dll" Private="false" />
+		<Reference Include="Assembly-CSharp" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll" Private="false" />
+		<Reference Include="Il2CppFishNet.Runtime" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Il2CppFishNet.Runtime.dll" Private="false" />
+		<Reference Include="Il2CppScheduleOne.Core" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Il2CppScheduleOne.Core.dll" Private="false" />
+		<Reference Include="Il2CppInterop.Runtime" HintPath="..\..\Game\Schedule I Default\MelonLoader\net6\Il2CppInterop.Runtime.dll" Private="false" />
+		<Reference Include="Il2Cppmscorlib" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll" Private="false" />
+		<Reference Include="MelonLoader" HintPath="..\..\Game\Schedule I Default\MelonLoader\net6\MelonLoader.dll" Private="false" />
+		<Reference Include="S1API" HintPath="..\..\Game\Schedule I Default\Mods\S1API.Il2Cpp.MelonLoader.dll" Private="false" />
+		<Reference Include="S1MAPI_Il2cpp" HintPath="..\..\Game\Schedule I Default\UserLibs\S1MAPI_Il2cpp.dll" Private="false" />
+		<Reference Include="UnityEngine" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.dll" Private="false" />
+		<Reference Include="UnityEngine.CoreModule" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll" Private="false" />
+		<Reference Include="UnityEngine.ParticleSystemModule" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.ParticleSystemModule.dll" Private="false" />
+		<Reference Include="UnityEngine.PhysicsModule" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll" Private="false" />
+		<Reference Include="UnityEngine.UI" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll" Private="false" />
+		<Reference Include="Unity.TextMeshPro" HintPath="..\..\Game\Schedule I Default\MelonLoader\Il2CppAssemblies\Unity.TextMeshPro.dll" Private="false" />
 	</ItemGroup>
 </Project>

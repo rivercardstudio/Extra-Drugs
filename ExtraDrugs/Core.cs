@@ -5,7 +5,6 @@ using ExtraDrugs.Miscellaneous;
 using MelonLoader;
 using S1API.Lifecycle;
 using S1API.Products;
-using static MelonLoader.MelonLaunchOptions;
 
 [assembly: MelonInfo(typeof(ExtraDrugs.Core), "Extra Drugs", "1-BETA3", "River Card Studio")][assembly: MelonGame("TVGS", "Schedule I")]
 
