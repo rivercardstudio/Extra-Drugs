@@ -41,8 +41,7 @@ namespace ExtraDrugs.Miscellaneous
         {
             PostBenziesCallData = S1PhoneCallData;
             AddStage(
-                "And that's how we deal with pests, <h1>Thomas Benzies</h> deserved it. " +
-                "I can't lie, he had it coming. " +
+                "And that's how we deal with pests, <h1>Thomas Benzies</h> had it coming. " +
                 "Now that he's gone, the market's all yours. " +
                 "You want to make more money, right?"
                 );

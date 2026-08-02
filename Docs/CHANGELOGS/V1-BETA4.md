@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ae32175 (Add Uncle Nelson crack call)
 Extra Drugs V1-BETA2
 
 
@@ -16,8 +19,11 @@ Extra Drugs V1-BETA2
 
 \[ ] Added crack mixes custom color working
 
+<<<<<<< HEAD
 \[ ] Added customer preferences
 
+=======
+>>>>>>> ae32175 (Add Uncle Nelson crack call)
 
 
 === Fixes ===
@@ -30,4 +36,7 @@ Extra Drugs V1-BETA2
 
 \[X] Cleaned repository
 
+<<<<<<< HEAD
 >>>>>>> e09f2c9 (temp)
+=======
+>>>>>>> ae32175 (Add Uncle Nelson crack call)

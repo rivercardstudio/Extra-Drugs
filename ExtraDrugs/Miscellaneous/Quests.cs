@@ -135,7 +135,7 @@ namespace ExtraDrugs.Miscellaneous
         public CrackInTheTimeline()
         {
             entryPostBenziesCall = AddEntry("Talk to Uncle Nelson at a payphone");
-            entryCookCrack = AddEntry("Cook crack at the chemistry station");
+            entryCookCrack = AddEntry("Cook liquid crack at the chemistry station");
             entryBakeCrack = AddEntry("Bake the liquid crack with the lab oven");
         }
 

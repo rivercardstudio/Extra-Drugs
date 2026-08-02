@@ -1,14 +1,16 @@
-Extra Drugs V1-BETA2 
+Extra Drugs V1-BETA2
 
 
 
-=== Additions === 
+=== Additions ===
 
-\[X] Added brick support 
+\[X] Added brick support
 
-\[X] Added crack quality dependent on cocaine quality 
+\[X] Added crack quality dependent on cocaine quality
 
-\[X] Added new crack model 
+\[X] Added new crack model
+
+\[X] Added Uncle Nelson crack call foundation
 
 \[X] Added Uncle Nelson lean call foundation
 
@@ -18,13 +20,13 @@ Extra Drugs V1-BETA2
 
 
 
-=== Fixes === 
+=== Fixes ===
 
-\[X] Fixed spelling inconsistencies 
+\[X] Fixed spelling inconsistencies
 
 
 
-=== Changes === 
+=== Changes ===
 
 \[X] Changed crack recipe time from 480 minutes to 240
 
